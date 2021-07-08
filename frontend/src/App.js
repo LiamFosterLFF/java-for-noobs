@@ -1,6 +1,24 @@
 import './App.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 function App() {
+
+  const [ products, setProducts ] = useState([]);
+
+  useEffect(() => {
+    // fetch("/api/products").then(response => {
+    //   console.log(response.body);
+    //   setProducts(response.url)
+    // })
+    const fetchData = async () => {
+      const { data } = await axios.get("/api/products")
+      console.log(data);
+      setProducts(data)
+    }
+    fetchData();
+  }, []);
+  console.log(products);
   return (
     <div className="App">
       <header className="App-header">
