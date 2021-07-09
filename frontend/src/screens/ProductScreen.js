@@ -11,7 +11,7 @@ const ProductScreen = () => {
     }, []);
 
     const Products = ({ products }) => {
-        return products.slice(10).map((product, index) => {
+        return products.slice(0, 10).map((product, index) => {
             return (
                 <div className="product" key={index}>
                     <div className="product-name">Name: {product.name}</div>
@@ -20,7 +20,7 @@ const ProductScreen = () => {
                     <div className="product-price">Price: {product.price}</div>
                     <div className="product-reviews">No of Reviews: {product.numReviews}</div>
                     <div className="product-rating">Rating: {product.rating}</div>
-                    <div className="product-inStock">Inventory: {product.countInStock} \n</div>
+                    <div className="product-inStock">Inventory: {product.countInStock}</div>
                     <br></br>
                 </div>
             )
