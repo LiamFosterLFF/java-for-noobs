@@ -7,18 +7,12 @@ function App() {
   const [ products, setProducts ] = useState([]);
 
   useEffect(() => {
-    // fetch("/api/products").then(response => {
-    //   console.log(response.body);
-    //   setProducts(response.url)
-    // })
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/products")
-      console.log(data);
-      setProducts(data)
-    }
-    fetchData();
+      axios.get("/api/products").then(response => {
+        setProducts(response.data)
+      })
   }, []);
   console.log(products);
+  
   return (
     <div className="App">
       <header className="App-header">
