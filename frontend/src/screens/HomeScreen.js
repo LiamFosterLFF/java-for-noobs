@@ -1,9 +1,20 @@
 
 const HomeScreen = () => {
     return (
-        <div>
-            Home Screen
-        </div>
+        <div className="App-header">
+            <img src={process.env.PUBLIC_URL + "/bean.png"} className="App-logo" alt="logo" />
+            <p>
+            Edit <code>src/App.js</code> and save to reload.
+            </p>
+            <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            Learn React
+            </a>
+      </div>
     )
 }
 
