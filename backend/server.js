@@ -1,7 +1,8 @@
 import express from 'express';
-import data from './data';
+import data from './data/products';
 import connectDB from './config/db';
-require('dotenv').config()
+require('dotenv').config();
+
 connectDB();
 
 const app = express();
