@@ -8,10 +8,10 @@ import SideDrawer from './components/SideDrawer';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
+import ProductsScreen from './screens/ProductsScreen';
+import ProductDetailsScreen from './screens/ProductDetailsScreen';
 import CartScreen from './screens/CartScreen';
-import LoggedIn from './screens/LoggedIn';
-import LoggedOut from './screens/LoggedOut';
+import LogInOut from './screens/LogInOut';
 
 function App() {
 
@@ -25,8 +25,10 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/home" component={HomeScreen}/>
-            <Route exact path="/product" component={ProductScreen}/>
+            <Route exact path="/products" component={ProductsScreen}/>
+            <Route exact path="/productDetails/:id" component={ProductDetailsScreen}/>
             <Route exact path="/cart" component={CartScreen}/>
+            <Route exact path="/loginout" component={LogInOut} loggedIn={loggedIn}/>
           </Switch>
         </main>
       </SideDrawer> 

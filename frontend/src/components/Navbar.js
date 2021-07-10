@@ -11,19 +11,22 @@ const Navbar = (props) => {
     const [ activeItem, setActiveItem ] = useState("home")
     const mediaQuery = useBreakpoint()
     const handleItemClick = (e, { name }) => setActiveItem(name)
-    const menuItems = ['home', 'product'];
+    const menuItems = ['home', 'products'];
 
 
     const HamburgerButton = () => {
         if (mediaQuery === "desktop") {
             return (<>
+                <Menu.Item>
+                    <Input icon='search' placeholder='Search...' />
+                </Menu.Item>
                 <Menu.Item as={Link} to='/cart'>
                     <Icon name='cart' />
                 </Menu.Item>
                 <Menu.Item
                     name='log in'
                     active={activeItem === 'log in'}
-                    as={Link} to='/login'
+                    as={Link} to='/loginout'
                 /></>
             )}
         return (
@@ -34,6 +37,9 @@ const Navbar = (props) => {
     }
     return (
         <Menu secondary>
+            <Menu.Item>
+                <Icon name='coffee' size="large" />
+            </Menu.Item>
             {menuItems.map((item, index) => {
                 return (
                     <Menu.Item
@@ -46,9 +52,7 @@ const Navbar = (props) => {
                 )
             })}
             <Menu.Menu position='right'>
-            <Menu.Item>
-                <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
+            
             <HamburgerButton/>
             </Menu.Menu>
       </Menu>

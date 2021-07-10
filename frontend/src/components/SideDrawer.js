@@ -15,17 +15,14 @@ const SidebarExampleDimmed = (props) => {
         visible={props.visible}
         width='thin'
         >  
-            <Menu.Item as={Link} to='/home'>
-                <Icon name='home' />
-                home
-            </Menu.Item>
-            <Menu.Item as={Link} to='/products'>
-                <Icon name='shopping bag' />
-                products
+            <Menu.Item>
+                <Icon name="search"/>
             </Menu.Item>
             <Menu.Item as={Link} to='/cart'>
                 <Icon name='cart' />
-                cart
+            </Menu.Item>
+            <Menu.Item name='log in' as={Link} to='/loginout'>
+                <Icon name="cog"/>
             </Menu.Item>
         </Sidebar>
         <Sidebar.Pusher dimmed={props.visible}>
