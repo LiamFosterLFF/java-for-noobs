@@ -26,7 +26,7 @@ const Navbar = (props) => {
                 <Menu.Item
                     name='log in'
                     active={activeItem === 'log in'}
-                    as={Link} to='/loginout'
+                    as={Link} to='/login'
                 /></>
             )}
         return (

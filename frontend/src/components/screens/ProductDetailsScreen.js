@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dimmer, Loader, Button } from 'semantic-ui-react';
-import QuantityDropdown from '../components/QuantityDropdown';
+import QuantityDropdown from '../QuantityDropdown';
 
 //Actions
-import { getProductDetails } from '../redux/actions/productActions';
-import { addToCart } from '../redux/actions/cartActions';
+import { getProductDetails } from '../../redux/actions/productActions';
+import { addToCart } from '../../redux/actions/cartActions';
 
 const ProductDetailsScreen = ({ match, history }) => {
     const [ qty, setQty ] = useState(1)

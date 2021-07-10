@@ -6,12 +6,19 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import SideDrawer from './components/SideDrawer';
 
+// Routing
+import PrivateRoute from './components/routing/PrivateRoute';
+
 // Screens
-import HomeScreen from './screens/HomeScreen';
-import ProductsScreen from './screens/ProductsScreen';
-import ProductDetailsScreen from './screens/ProductDetailsScreen';
-import CartScreen from './screens/CartScreen';
-import LogInOut from './screens/LogInOut';
+import HomeScreen from './components/screens/HomeScreen';
+import ProductsScreen from './components/screens/ProductsScreen';
+import ProductDetailsScreen from './components/screens/ProductDetailsScreen';
+import CartScreen from './components/screens/CartScreen';
+import PrivateScreen from './components/screens/PrivateScreen';
+import LoginScreen from './components/screens/LoginScreen';
+import RegisterScreen from './components/screens/RegisterScreen';
+import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
+import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
 
 function App() {
 
@@ -24,11 +31,16 @@ function App() {
       <SideDrawer visible={showSideDrawer} setVisible={setShowSideDrawer}> 
         <main>
           <Switch>
+            <PrivateRoute exact path='/' component={PrivateScreen}/>
             <Route exact path="/home" component={HomeScreen}/>
             <Route exact path="/products" component={ProductsScreen}/>
             <Route exact path="/productDetails/:id" component={ProductDetailsScreen}/>
             <Route exact path="/cart" component={CartScreen}/>
-            <Route exact path="/loginout" component={LogInOut} loggedIn={loggedIn}/>
+            <Route exact path="/login" component={LoginScreen}/>
+            <Route exact path="/register" component={RegisterScreen}/>
+            <Route exact path="/forgotPassword" component={ForgotPasswordScreen}/>
+            <Route exact path="/resetPassword/:resetToken" component={ResetPasswordScreen}/>
+
           </Switch>
         </main>
       </SideDrawer> 

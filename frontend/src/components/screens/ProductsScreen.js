@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { getProducts as listProducts } from '../redux/actions/productActions';
+import { getProducts as listProducts } from '../../redux/actions/productActions';
 
 const ProductsScreen = () => {
     // const [ products, setProducts ] = useState([]);

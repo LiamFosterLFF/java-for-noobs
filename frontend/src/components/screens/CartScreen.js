@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import QuantityDropdown from '../components/QuantityDropdown';
+import QuantityDropdown from '../QuantityDropdown';
 
-import { addToCart } from '../redux/actions/cartActions';
+import { addToCart } from '../../redux/actions/cartActions';
 
 const CartScreen = () => {
 

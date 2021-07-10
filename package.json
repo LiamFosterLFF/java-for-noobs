@@ -11,7 +11,7 @@
     "data:import": "node backend/seederScript.js"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "config": "^3.3.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^5.13.2",
+    "nodemailer": "^6.6.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
