@@ -19,6 +19,7 @@ import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
+import PaymentScreen from './components/screens/PaymentScreen';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/register" component={RegisterScreen}/>
             <Route exact path="/forgotPassword" component={ForgotPasswordScreen}/>
             <Route exact path="/resetPassword/:resetToken" component={ResetPasswordScreen}/>
+            <Route exact path="/payment" component={PaymentScreen}/>
 
           </Switch>
         </main>

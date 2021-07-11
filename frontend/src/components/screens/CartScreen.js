@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 import QuantityDropdown from '../QuantityDropdown';
 
 import { addToCart } from '../../redux/actions/cartActions';
@@ -37,11 +38,13 @@ const CartScreen = () => {
         )
     }
 
-    return (<>{
-        (cartItems.length === 0) ?
-            (<div> Your cart is empty <Link to='/'>Go Back</Link></div>) :
-            cartItems.map((item, index) => <CartItem item={item} qty={item.qty} qtyChangeHandler={qtyChangeHandler}/>)
-    }</>)
+    return (
+        <div>
+            {(cartItems.length === 0) ?
+                (<div> Your cart is empty <Link to='/'>Go Back</Link></div>) :
+                cartItems.map((item, index) => <CartItem item={item} qty={item.qty} qtyChangeHandler={qtyChangeHandler}/>)}
+            <Button as={Link} to='/payment'>Purchase</Button>
+        </div>)
 }
 
 
