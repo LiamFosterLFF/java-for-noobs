@@ -1,3 +1,6 @@
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const CART_RESET = "CART_RESET";
+
+export const PURCHASE_SUCCESS = "PURCHASE_SUCCESS";
+export const PURCHASE_FAIL = "PURCHASE_FAIL";

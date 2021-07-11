@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';

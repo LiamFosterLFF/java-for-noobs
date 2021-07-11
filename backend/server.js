@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/payment', require('./routes/paymentRoutes'));
 app.use('/api/private', require('./routes/privateRoutes'));
 // Error (last)
 app.use(require('./middleware/errorMiddleware'))

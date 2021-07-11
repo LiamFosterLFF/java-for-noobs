@@ -22,3 +22,22 @@ export const removeFromCart = (id) => (dispatch, getState) => {
 
     localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
 }
+
+export const sendPaymentData = (id, amount) => async (dispatch, getState) => {
+    try {
+        const response = await axios.post("http://localhost:5000/api/payment", { amount, id });
+
+        if(response.data.success) {
+            dispatch({
+                type: actionTypes.PURCHASE_SUCCESS
+            })
+        }
+        
+    } catch (error) {
+        dispatch({ 
+            type: actionTypes.PURCHASE_FAIL,
+            payload: (error.response && error.response.data.message) ? error.response.data.message : error.message
+        });
+    }
+
+}

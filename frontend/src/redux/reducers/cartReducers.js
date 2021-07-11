@@ -27,6 +27,20 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
                 cartItems: state.cartItems.filter((x) => x.product !== action.payload)
             }
 
+        case actionTypes.PURCHASE_SUCCESS:
+            return {
+                ...state,
+                success: true,
+                cartItems: []
+            };
+
+        case actionTypes.PURCHASE_FAIL:
+            return {
+                ...state,
+                success: false,
+                error: action.payload
+            };
+
         default:
             return state;
     }

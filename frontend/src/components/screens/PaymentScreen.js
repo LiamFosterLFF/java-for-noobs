@@ -1,15 +1,18 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { sendPaymentData } from '../../redux/actions/cartActions';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import axios from 'axios';
 import { Button } from 'semantic-ui-react';
 
 const PaymentForm = () => {
-    const [ success, setSuccess ] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
+
+    const dispatch = useDispatch();
+    const makePayment = useSelector(state => state.cart);
+    const { success, error } = makePayment;
 
     const CARD_OPTIONS = {
         style: {
@@ -35,20 +38,8 @@ const PaymentForm = () => {
         })
 
         if (!error) {
-            try {
-                const { id } = paymentMethod;
-                const response = await axios.post("http://localhost:4000/payment", {
-                    amount: 1000,
-                    id
-                })
-
-                if(response.data.success) {
-                    console.log("Successful payment");
-                    setSuccess(true);
-                }
-            } catch (error) {
-                console.log("Error: ", error);
-            }
+            const { id } = paymentMethod;
+            dispatch(sendPaymentData(id));
         } else {
             console.log(error.message);
         }
