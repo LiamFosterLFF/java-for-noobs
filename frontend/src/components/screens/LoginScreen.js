@@ -3,7 +3,8 @@ import DefaultForm from '../DefaultForm';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-// Probably need to do some work on the logic for being logged in, possible a state variable as a prop
+// Needs some better error handling for the loginhandler/input
+
 const LogInScreen = ({ history }) => {
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const LogInScreen = ({ history }) => {
 
     const loginHandler = async (e) => {
         e.preventDefault();
-        const [username, email, password, confirmPassword, ...rest] = e.target; 
+        const [email, password, ...rest] = e.target; 
 
         const config = {
             header: {

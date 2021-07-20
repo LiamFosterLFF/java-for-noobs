@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+// Needs some better error handling for the registerhandler/input
 const RegisterScreen = ({ history }) => {
 
     useEffect(() => {

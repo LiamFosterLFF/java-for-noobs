@@ -1,9 +1,9 @@
 import { useForm } from '../utils/useForm';
-import { Button } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 const FormGroup = ({ props, value, handleChange }) => {
     return (
-        <div className="form-group">
+        <Form.Field>
             <label htmlFor={props.name}>{props.title}</label>
             <input
                 type={props.type}
@@ -13,7 +13,7 @@ const FormGroup = ({ props, value, handleChange }) => {
                 value={value}
                 onChange={handleChange}
             />
-        </div>
+        </Form.Field>
     )
 }
 
@@ -23,17 +23,22 @@ const DefaultForm = ({props}) => {
         result[formGroup.name] = formGroup.initialValue;
         return result;
     }, {});
-    const [ formValues, handleFormChange ] = useForm(initialValues);
-    
+    const [ formValues, handleFormChange, resetForm ] = useForm(initialValues);
+
+    const handleSubmit = (e) => {
+        props.handler(e);
+        resetForm();
+    }
+
     return (
-        <form onSubmit={props.handler}>
+        <Form onSubmit={handleSubmit}>
             <h3>{props.title}</h3>
             {props.formGroups.map(propsObj => {
                 return <FormGroup props={propsObj} value={formValues[props.name]} handleChange={handleFormChange}/>
             })}
             <Button type="submit">{props.title}</Button>
 
-        </form>
+        </Form>
     )
 };
 
