@@ -1,13 +1,20 @@
+import { useEffect } from 'react';
 import DefaultForm from '../DefaultForm';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
 const RegisterScreen = ({ history }) => {
+
+    useEffect(() => {
+        if (localStorage.getItem("authToken")) {
+            history.push('/')
+        }
+    })
+
     const registerHandler = async (e) => {
         e.preventDefault();
         const [username, email, password, confirmPassword, ...rest] = e.target; 
-        console.log(username.value, email.value, password.value, confirmPassword.value);
 
         const config = {
             header: {
@@ -21,7 +28,8 @@ const RegisterScreen = ({ history }) => {
                 {
                     username: username.value, 
                     email: email.value, 
-                    password: password.value}, 
+                    password: password.value
+                }, 
                 config
             )
             
