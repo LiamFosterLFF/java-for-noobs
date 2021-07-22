@@ -17,12 +17,15 @@ const SidebarExampleDimmed = (props) => {
         >  
             <Menu.Item>
                 <Icon name="search"/>
+                Search
             </Menu.Item>
             <Menu.Item as={Link} to='/cart'>
                 <Icon name='cart' />
+                Shopping Cart
             </Menu.Item>
             <Menu.Item name='log in' as={Link} to='/loginout'>
                 <Icon name="cog"/>
+                Log In/ Register
             </Menu.Item>
         </Sidebar>
         <Sidebar.Pusher dimmed={props.visible}>

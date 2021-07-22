@@ -26,15 +26,19 @@ const DefaultForm = ({props}) => {
     const [ formValues, handleFormChange, resetForm ] = useForm(initialValues);
 
     const handleSubmit = (e) => {
-        props.handler(e);
-        resetForm();
+        const response = props.handler(e);
+        if (response.success) {
+            resetForm();
+        } else {
+            console.log(response.error);
+        }
     }
 
     return (
         <Form onSubmit={handleSubmit}>
             <h3>{props.title}</h3>
-            {props.formGroups.map(propsObj => {
-                return <FormGroup props={propsObj} value={formValues[props.name]} handleChange={handleFormChange}/>
+            {props.formGroups.map((propsObj, ind) => {
+                return <FormGroup props={propsObj} key={ind} value={formValues[props.name]} handleChange={handleFormChange}/>
             })}
             <Button type="submit">{props.title}</Button>
 

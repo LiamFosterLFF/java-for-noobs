@@ -36,8 +36,14 @@ const RegisterScreen = ({ history }) => {
             
             localStorage.setItem("authToken", data.token);
             history.push("/");
+            return {
+                success: false
+            };
         } catch (error) {
-            console.log(error.response.data.error);
+            return {
+                success: false,
+                error: error.response.data.error
+            }
         }
     }
 

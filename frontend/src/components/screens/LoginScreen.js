@@ -35,16 +35,22 @@ const LogInScreen = ({ history }) => {
             
             localStorage.setItem("authToken", data.token);
             history.push("/");
+            return {
+                success: true
+            }
         } catch (error) {
-            console.log(error.response.data.error);
+            return {
+                success: false,
+                error: error.response.data.error
+            }
         }
     }
 
     const formProps = {
         "title": "Log In",
         "formGroups": [
-            { name: "name", title: "Username: ", type: "text", required: true, placeholder: "Enter Username", initialValue: ""},
-            { name: "password", title: "Password: ", type: "password", required: true, placeholder: "Enter Password", initialValue: ""}
+            { name: "name", title: "Email: ", type: "text", required: true, placeholder: "Enter Email", initialValue: "" },
+            { name: "password", title: "Password: ", type: "password", required: true, placeholder: "Enter Password", initialValue: "" }
         ],
         "handler": loginHandler,
     }

@@ -42,7 +42,7 @@ const CartScreen = () => {
         <div>
             {(cartItems.length === 0) ?
                 (<div> Your cart is empty <Link to='/'>Go Back</Link></div>) :
-                cartItems.map((item, index) => <CartItem item={item} qty={item.qty} qtyChangeHandler={qtyChangeHandler}/>)}
+                cartItems.map((item, index) => <CartItem item={item} key={index} qty={item.qty} qtyChangeHandler={qtyChangeHandler}/>)}
             <Button as={Link} to='/payment'>Purchase</Button>
         </div>)
 }
