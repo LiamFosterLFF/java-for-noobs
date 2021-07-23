@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // Components
 import Navbar from './components/Navbar';
 import SideDrawer from './components/SideDrawer';
+import Footer from './components/Footer';
 
 // Routing
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -46,7 +47,7 @@ function App() {
           </Switch>
         </main>
       </SideDrawer> 
-
+    <Footer />
     </Router>
   );
 }
