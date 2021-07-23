@@ -33,7 +33,7 @@ const ProductsScreen = () => {
     }
 
     return (
-        <div style={{height: "100vh"}}>
+        <div style={{minHeight: "100vh"}}>
             {loading ? 
                 <Dimmer active><Loader>Loading...</Loader></Dimmer>:
                 error ? 
