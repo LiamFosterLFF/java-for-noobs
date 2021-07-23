@@ -2,7 +2,7 @@ import { Grid, Icon, Image } from 'semantic-ui-react';
 
 const Footer = () => {
     return (
-        <div style={{ textAlign: "center", verticalAlign: "center", background: "black", color: "white" }}>
+        <div style={{ textAlign: "center", background: "black", color: "white" }}>
             <Grid columns={3}>
                 <Grid.Column>Java For Noobs</Grid.Column>
                 <Grid.Column>

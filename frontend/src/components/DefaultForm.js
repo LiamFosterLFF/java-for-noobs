@@ -1,5 +1,6 @@
 import { useForm } from '../utils/useForm';
 import { Button, Form } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FormGroup = ({ props, value, handleChange }) => {
     return (
@@ -19,6 +20,10 @@ const FormGroup = ({ props, value, handleChange }) => {
 
 const DefaultForm = ({props}) => {
 
+    const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth);
+    const { loggedIn } = auth
+
     const initialValues = props.formGroups.reduce((result, formGroup) => {
         result[formGroup.name] = formGroup.initialValue;
         return result;
@@ -26,12 +31,8 @@ const DefaultForm = ({props}) => {
     const [ formValues, handleFormChange, resetForm ] = useForm(initialValues);
 
     const handleSubmit = (e) => {
-        const response = props.handler(e);
-        if (response.success) {
-            resetForm();
-        } else {
-            console.log(response.error);
-        }
+        e.preventDefault();
+        dispatch(props.handler(e.target));
     }
 
     return (

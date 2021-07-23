@@ -23,10 +23,17 @@ const SidebarExampleDimmed = (props) => {
                 <Icon name='cart' />
                 Shopping Cart
             </Menu.Item>
-            <Menu.Item name='log in' as={Link} to='/loginout'>
-                <Icon name="cog"/>
-                Log In/ Register
-            </Menu.Item>
+            {props.loggedIn ? 
+                <Menu.Item name='log in' as={Link} to='/login'>
+                    <Icon name="cog"/>
+                    Log In/ Register
+                </Menu.Item>
+                :
+                <Menu.Item name='log out' as={Link} to='/logout'>
+                    <Icon name="cog"/>
+                    Log Out
+                </Menu.Item>
+            }  
         </Sidebar>
         <Sidebar.Pusher dimmed={props.visible}>
             {props.children}

@@ -3,10 +3,6 @@ import { Menu, Input, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import useBreakpoint from '../utils/useBreakPoint';
 
-
-
-
-
 const Navbar = (props) => {
     const [ activeItem, setActiveItem ] = useState("home")
     const mediaQuery = useBreakpoint()
@@ -14,7 +10,7 @@ const Navbar = (props) => {
     const menuItems = ['home', 'products'];
 
 
-    const HamburgerButton = () => {
+    const HamburgerButton = (props) => {
         if (mediaQuery === "desktop") {
             return (<>
                 <Menu.Item>
@@ -23,11 +19,20 @@ const Navbar = (props) => {
                 <Menu.Item as={Link} to='/cart'>
                     <Icon name='cart' />
                 </Menu.Item>
-                <Menu.Item
+                {!props.loggedIn ? 
+                    <Menu.Item
                     name='log in'
                     active={activeItem === 'log in'}
                     as={Link} to='/login'
-                /></>
+                    /> 
+                    : 
+                    <Menu.Item
+                    name='log out'
+                    active={activeItem === 'log out'}
+                    as={Link} to='/logout'
+                    /> 
+                }
+                </>
             )}
         return (
             <Menu.Item > 
@@ -53,7 +58,7 @@ const Navbar = (props) => {
             })}
             <Menu.Menu position='right'>
             
-            <HamburgerButton/>
+            <HamburgerButton loggedIn={props.loggedIn}/>
             </Menu.Menu>
       </Menu>
     )

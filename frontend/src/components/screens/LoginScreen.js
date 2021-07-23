@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import DefaultForm from '../DefaultForm';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import { login } from '../../redux/actions/authActions';
 
 // Needs some better error handling for the loginhandler/input
 
@@ -13,46 +14,13 @@ const LogInScreen = ({ history }) => {
         }
     })
 
-    const loginHandler = async (e) => {
-        e.preventDefault();
-        const [email, password, ...rest] = e.target; 
-
-        const config = {
-            header: {
-                "Content-Type": "application/json"
-            }
-        }
-
-        try {
-            const { data } = await axios.post(
-                "/api/auth/login", 
-                {
-                    email: email.value, 
-                    password: password.value
-                }, 
-                config
-            )
-            
-            localStorage.setItem("authToken", data.token);
-            history.push("/");
-            return {
-                success: true
-            }
-        } catch (error) {
-            return {
-                success: false,
-                error: error.response.data.error
-            }
-        }
-    }
-
     const formProps = {
         "title": "Log In",
         "formGroups": [
             { name: "name", title: "Email: ", type: "text", required: true, placeholder: "Enter Email", initialValue: "" },
             { name: "password", title: "Password: ", type: "password", required: true, placeholder: "Enter Password", initialValue: "" }
         ],
-        "handler": loginHandler,
+        "handler": login,
     }
 
     return (

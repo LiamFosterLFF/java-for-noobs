@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import DefaultForm from '../DefaultForm';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import { register } from '../../redux/actions/authActions';
+
 
 
 // Needs some better error handling for the registerhandler/input
@@ -14,37 +16,36 @@ const RegisterScreen = ({ history }) => {
     })
 
     const registerHandler = async (e) => {
-        e.preventDefault();
-        const [username, email, password, confirmPassword, ...rest] = e.target; 
+        // const [username, email, password, confirmPassword, ...rest] = e.target; 
 
-        const config = {
-            header: {
-                "Content-Type": "application/json"
-            }
-        }
+        // const config = {
+        //     header: {
+        //         "Content-Type": "application/json"
+        //     }
+        // }
 
-        try {
-            const { data } = await axios.post(
-                "/api/auth/register", 
-                {
-                    username: username.value, 
-                    email: email.value, 
-                    password: password.value
-                }, 
-                config
-            )
+        // try {
+        //     const { data } = await axios.post(
+        //         "/api/auth/register", 
+        //         {
+        //             username: username.value, 
+        //             email: email.value, 
+        //             password: password.value
+        //         }, 
+        //         config
+        //     )
             
-            localStorage.setItem("authToken", data.token);
-            history.push("/");
-            return {
-                success: true
-            };
-        } catch (error) {
-            return {
-                success: false,
-                error: error.response.data.error
-            }
-        }
+        //     localStorage.setItem("authToken", data.token);
+        //     history.push("/");
+        //     return {
+        //         success: true
+        //     };
+        // } catch (error) {
+        //     return {
+        //         success: false,
+        //         error: error.response.data.error
+        //     }
+        // }
     }
 
     const formProps = {
@@ -55,7 +56,7 @@ const RegisterScreen = ({ history }) => {
             { name: "password", title: "Password: ", type: "password", required: true, placeholder: "Enter Password", initialValue: ""},
             { name: "confirmPassword", title: "Confirm Password: ", type: "password", required: true, placeholder: "Enter Confirm Password", initialValue: ""},
         ],
-        "handler": registerHandler,
+        "handler": register
     }
     
     return (

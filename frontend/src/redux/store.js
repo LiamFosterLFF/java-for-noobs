@@ -5,21 +5,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // Reducers
 import { cartReducer } from './reducers/cartReducers';
 import { getProductsReducer, getProductDetailsReducer } from './reducers/productReducers';
+import { authReducer } from './reducers/authReducers';
 
 const reducer = combineReducers({
     cart: cartReducer,
     getProducts: getProductsReducer,
-    getProductDetails: getProductDetailsReducer
+    getProductDetails: getProductDetailsReducer,
+    auth: authReducer
 })
 
 const middleware = [thunk];
 
 const cartFromLocalStorage = localStorage.getItem("cart") ? JSON.parse( localStorage.getItem("cart")) : [];
-
+const loggedIn = localStorage.getItem("authToken") ? true: false;
 const INITIAL_STATE = {
     cart: {
         cartItems: cartFromLocalStorage
-    }
+    },
+    auth: {loggedIn}
 }
 
 const store = createStore(

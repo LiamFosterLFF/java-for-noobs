@@ -16,14 +16,12 @@ const CartScreen = () => {
     };
 
     const CartItem = ({ item, qty, qtyChangeHandler,  }) => {
-
         // Currently a bug with quantity dropdown being added to cart, possibly with adding same item to cart in general
         // Would like that when you add an item to the cart that's already in there, it adds another one
         // Might be better to separate into two functions: One for adding to cart and one for updating quantity
         return (
             <div className="item">
-                <QuantityDropdown qty={qty} setQty={qtyChangeHandler} countInStock={1000} /> 
-
+                <QuantityDropdown qty={qty} setQty={() => qtyChangeHandler(item._id, qty)} countInStock={1000} /> 
                 <div className="item-name">Name: {item.name}</div>
                 <div className="item-category">Category: {item.category}</div>
                 <div className="item-description">Description: {item.description}</div>
