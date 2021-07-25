@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { getProducts as listProducts } from '../../redux/actions/productActions';
 
 const ProductsScreen = () => {
-    // const [ products, setProducts ] = useState([]);
     const dispatch = useDispatch();
     const getProducts = useSelector(state => state.getProducts);
     const { products, loading, error } = getProducts

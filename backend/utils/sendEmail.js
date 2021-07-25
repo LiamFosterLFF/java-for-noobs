@@ -11,7 +11,7 @@ const sendEmail = (options) => {
     console.log(options)
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM,
+        from: process.env.EMAIL_USERNAME,
         to: options.to,
         subject: options.subject,
         html: options.text

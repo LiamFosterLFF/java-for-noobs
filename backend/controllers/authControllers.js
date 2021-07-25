@@ -64,8 +64,8 @@ exports.forgotPassword = async (req, res, next) => {
 
         const message = `
             <h1>You have requested a password reset</h1>
-            <p>Please go to his link to reset your password</p>
-            <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+            <p>Please go to this link to reset your password</p>
+            <a href=${resetUrl} clicktracking=off>Click Here to Reset</a>
         `;
 
         try {
@@ -82,7 +82,7 @@ exports.forgotPassword = async (req, res, next) => {
 
             await user.save();
 
-            return next(new ErrorResponse("Email could not be sent", 500));
+            return next(new ErrorResponse(error, 500));
         }
     } catch (error) {
         next(error)

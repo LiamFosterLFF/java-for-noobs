@@ -15,39 +15,6 @@ const RegisterScreen = ({ history }) => {
         }
     })
 
-    const registerHandler = async (e) => {
-        // const [username, email, password, confirmPassword, ...rest] = e.target; 
-
-        // const config = {
-        //     header: {
-        //         "Content-Type": "application/json"
-        //     }
-        // }
-
-        // try {
-        //     const { data } = await axios.post(
-        //         "/api/auth/register", 
-        //         {
-        //             username: username.value, 
-        //             email: email.value, 
-        //             password: password.value
-        //         }, 
-        //         config
-        //     )
-            
-        //     localStorage.setItem("authToken", data.token);
-        //     history.push("/");
-        //     return {
-        //         success: true
-        //     };
-        // } catch (error) {
-        //     return {
-        //         success: false,
-        //         error: error.response.data.error
-        //     }
-        // }
-    }
-
     const formProps = {
         "title": "Register",
         "formGroups": [

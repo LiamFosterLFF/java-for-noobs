@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import DefaultForm from '../DefaultForm';
 import { Link } from 'react-router-dom';
 
+import DefaultForm from '../DefaultForm';
 import { login } from '../../redux/actions/authActions';
 
 // Needs some better error handling for the loginhandler/input

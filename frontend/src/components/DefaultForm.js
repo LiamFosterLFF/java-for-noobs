@@ -1,6 +1,7 @@
 import { useForm } from '../utils/useForm';
 import { Button, Form } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
+import SocialLogin from './SocialLogin';
 
 const FormGroup = ({ props, value, handleChange }) => {
     return (
@@ -36,14 +37,17 @@ const DefaultForm = ({props}) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <h3>{props.title}</h3>
-            {props.formGroups.map((propsObj, ind) => {
-                return <FormGroup props={propsObj} key={ind} value={formValues[props.name]} handleChange={handleFormChange}/>
-            })}
-            <Button type="submit">{props.title}</Button>
+        <div>
+            <Form onSubmit={handleSubmit}>
+                <h3>{props.title}</h3>
+                {props.formGroups.map((propsObj, ind) => {
+                    return <FormGroup props={propsObj} key={ind} value={formValues[props.name]} handleChange={handleFormChange}/>
+                })}
+                <Button type="submit">{props.title}</Button>
 
-        </Form>
+            </Form>
+            <SocialLogin/>
+        </div>
     )
 };
 
