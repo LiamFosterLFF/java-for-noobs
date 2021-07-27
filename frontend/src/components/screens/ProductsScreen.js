@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader, Dimmer } from 'semantic-ui-react';
+import SearchBar from '../ProductsSearchBar';
 import { Link } from 'react-router-dom';
 
 import { getProducts as listProducts } from '../../redux/actions/productActions';
@@ -33,6 +34,8 @@ const ProductsScreen = () => {
 
     return (
         <div style={{minHeight: "100vh"}}>
+            <SearchBar/>
+
             {loading ? 
                 <Dimmer active><Loader>Loading...</Loader></Dimmer>:
                 error ? 

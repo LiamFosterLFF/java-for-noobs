@@ -20,6 +20,31 @@ export const getProducts = () => async (dispatch) => {
     }
 }
 
+export const searchProducts = (query) => async (dispatch) => {
+    try {
+        if (query.length) {
+            dispatch({ type: actionTypes.GET_PRODUCTS_SEARCH_REQUEST});
+            const { data } = await axios.get(`/api/search?query=${query}`);
+    
+            dispatch({ 
+                type: actionTypes.GET_PRODUCTS_SEARCH_SUCCESS,
+                payload: data
+            });
+        } else {
+            dispatch({
+                type: actionTypes.GET_PRODUCTS_SEARCH_RESET
+            })
+        }
+
+
+    } catch (error) {
+        dispatch({ 
+            type: actionTypes.GET_PRODUCTS_SEARCH_FAIL,
+            payload: (error.response && error.response.data.message) ? error.response.data.message : error.message
+        });
+    }
+}
+
 export const getProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST});
