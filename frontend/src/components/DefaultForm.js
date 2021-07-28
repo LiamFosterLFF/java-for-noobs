@@ -3,7 +3,7 @@ import { Button, Form } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import SocialLogin from './SocialLogin';
 
-const FormGroup = ({ props, value, handleChange }) => {
+const FormGroup = ({ props }) => {
     return (
         <Form.Field>
             <label htmlFor={props.name}>{props.title}</label>
@@ -12,8 +12,8 @@ const FormGroup = ({ props, value, handleChange }) => {
                 required={props.required}
                 placeholder={props.placeholder}
                 id={props.name}
-                value={value}
-                onChange={handleChange}
+                value={props.value}
+                onChange={props.handleChange}
             />
         </Form.Field>
     )
@@ -22,8 +22,6 @@ const FormGroup = ({ props, value, handleChange }) => {
 const DefaultForm = ({props}) => {
 
     const dispatch = useDispatch();
-    const auth = useSelector(state => state.auth);
-    const { loggedIn } = auth
 
     const initialValues = props.formGroups.reduce((result, formGroup) => {
         result[formGroup.name] = formGroup.initialValue;
@@ -34,6 +32,7 @@ const DefaultForm = ({props}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(props.handler(e.target));
+        resetForm();
     }
 
     return (
