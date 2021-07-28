@@ -82,3 +82,35 @@ export const getProductDetailsReducer = (state = { product: {} }, action) => {
             return state;
     }
 }
+
+export const getSearchSuggestionsReducer = (state = { suggestions: [] }, action) => {
+    switch (action.type) {
+        case actionTypes.GET_PRODUCTS_SEARCH_SUGGESTIONS_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+        
+        case actionTypes.GET_PRODUCTS_SEARCH_SUGGESTIONS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                suggestions: action.payload
+            }
+
+        case actionTypes.GET_PRODUCTS_SEARCH_SUGGESTIONS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case actionTypes.GET_PRODUCTS_SEARCH_SUGGESTIONS_RESET:
+            return {
+                ...state,
+                suggestions: []
+            }
+
+        default:
+            return state;
+    }
+}
