@@ -9,7 +9,7 @@ const LogoutScreen = ({ history }) => {
     useEffect(() => {
         dispatch(logout())
         history.push('/')
-    }, [])
+    }, [dispatch, history])
 
     return <></>
 }

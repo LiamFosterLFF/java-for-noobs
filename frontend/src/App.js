@@ -1,7 +1,7 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Components
 import Navbar from './components/Navbar';
@@ -28,7 +28,6 @@ import PaymentScreen from './components/screens/PaymentScreen';
 function App() {
 
   const [ showSideDrawer, setShowSideDrawer ] = useState(false)
-  const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const { loggedIn } = auth;
 

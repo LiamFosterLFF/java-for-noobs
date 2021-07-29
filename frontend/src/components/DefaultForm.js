@@ -1,6 +1,6 @@
 import { useForm } from '../utils/useForm';
 import { Button, Form } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SocialLogin from './SocialLogin';
 
 const FormGroup = ({ props }) => {

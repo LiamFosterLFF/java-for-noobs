@@ -18,7 +18,6 @@ const getSearchSuggestions = async (req, res) => {
             },
             {
                 "$project": {
-                    "_id": 0,
                     "name": 1
                 }
             }

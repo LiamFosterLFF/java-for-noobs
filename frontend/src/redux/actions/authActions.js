@@ -2,7 +2,7 @@ import * as actionTypes from '../constants/authConstants';
 import axios from 'axios';
 
 export const login = (target) => async (dispatch, getState) => {
-    const [email, password, ...rest] = target; 
+    const [email, password,] = target; 
 
     const config = {
         header: {
@@ -44,7 +44,7 @@ export const logout = () => (dispatch, getState) => {
 }
 
 export const register = (target) => async (dispatch, getState) => {
-    const [username, email, password, confirmPassword, ...rest] = target; 
+    const [username, email, password,] = target; 
 
     const config = {
         header: {

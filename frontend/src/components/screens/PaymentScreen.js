@@ -12,7 +12,7 @@ const PaymentForm = () => {
 
     const dispatch = useDispatch();
     const makePayment = useSelector(state => state.cart);
-    const { success, error } = makePayment;
+    const { success, } = makePayment;
 
     const CARD_OPTIONS = {
         style: {

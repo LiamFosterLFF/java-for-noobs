@@ -6,11 +6,10 @@ import { Link } from 'react-router-dom';
 
 import { getProducts as listProducts } from '../../redux/actions/productActions';
 
-const ProductsScreen = () => {
+const ProductsScreen = ({ history }) => {
     const dispatch = useDispatch();
     const getProducts = useSelector(state => state.getProducts);
     const { products, loading, error } = getProducts
-    console.log(products)
 
     useEffect(() => {
         dispatch(listProducts())
@@ -35,7 +34,7 @@ const ProductsScreen = () => {
 
     return (
         <div style={{minHeight: "100vh"}}>
-            <SearchBar/>
+            <SearchBar history={history}/>
 
             {loading ? 
                 <Dimmer active><Loader>Loading...</Loader></Dimmer>:
