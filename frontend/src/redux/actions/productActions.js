@@ -69,6 +69,13 @@ export const getSearchSuggestions = (query) => async (dispatch) => {
     }
 }
 
+export const removeSearchSuggestions = () => (dispatch) => {
+    dispatch({
+        type: actionTypes.GET_PRODUCTS_SEARCH_SUGGESTIONS_RESET
+    })
+}
+
+
 export const getProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST});

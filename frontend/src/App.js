@@ -17,6 +17,7 @@ import ProductsScreen from './components/screens/ProductsScreen';
 import ProductDetailsScreen from './components/screens/ProductDetailsScreen';
 import CartScreen from './components/screens/CartScreen';
 import PrivateScreen from './components/screens/PrivateScreen';
+import LikeScreen from './components/screens/LikeScreen';
 import LoginScreen from './components/screens/LoginScreen';
 import LogoutScreen from './components/screens/LogoutScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
@@ -44,6 +45,7 @@ function App() {
             <Route exact path="/cart" component={CartScreen}/>
             <Route exact path="/login" component={LoginScreen}/>
             <Route exact path="/logout" component={LogoutScreen}/>
+            <Route exact path="/hearts" component={LikeScreen}/>
             <Route exact path="/register" component={RegisterScreen}/>
             <Route exact path="/forgotPassword" component={ForgotPasswordScreen}/>
             <Route exact path="/resetPassword/:resetToken" component={ResetPasswordScreen}/>

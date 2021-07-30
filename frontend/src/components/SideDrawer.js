@@ -23,6 +23,10 @@ const SidebarExampleDimmed = (props) => {
                 <Icon name='cart' />
                 Shopping Cart
             </Menu.Item>
+            <Menu.Item as={Link} to='/hearts'>
+                <Icon name='heart' />
+                Liked Items
+            </Menu.Item>
             {props.loggedIn ? 
                 <Menu.Item name='log in' as={Link} to='/login'>
                     <Icon name="cog"/>

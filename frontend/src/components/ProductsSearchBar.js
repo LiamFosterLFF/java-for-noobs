@@ -4,7 +4,7 @@ import { Input } from 'semantic-ui-react';
 import styled from "styled-components";
 // import _ from 'lodash';
 
-import { searchProducts, getSearchSuggestions } from '../redux/actions/productActions';
+import { searchProducts, getSearchSuggestions, removeSearchSuggestions } from '../redux/actions/productActions';
 
 const Suggestion = styled.div`
     list-style-type: none;
@@ -12,6 +12,17 @@ const Suggestion = styled.div`
     &:hover {
         background-color: #c0b7b1;
       }
+`;
+
+const DropdownMenu = styled.div`
+    width: 200px;
+    max-height: 100px;
+    min-height: 0px;
+    overflow-y: scroll;
+    z-index: 1000;
+    position: absolute;
+    background: #ffffff;
+    display: ${props => props.listOpen ? "inline" : "none" }
 `;
 
 // debounce and autocomplete
@@ -39,9 +50,9 @@ const ProductsSearchBar = ({ history }) => {
     }
 
     const handleSuggestionClick = (e) => {
-        console.log(e.target.id)
         setSearchValue(e.target.textContent);
         history.push(`/productDetails/${e.target.id}`)
+        dispatch(removeSearchSuggestions())
         setListOpen(false)
     }
 
@@ -55,13 +66,11 @@ const ProductsSearchBar = ({ history }) => {
             <form onSubmit={handleSubmit}>
                 <Input style={{width: "200px"}} icon='search' placeholder='Search Products By Name' value={searchValue} onChange={handleChange} /> 
             </form>
-            <div style={{ width: "200px", height: "100px", overflowY: "scroll", zIndex: "1000", position: "absolute", background: "white", display: listOpen ? "inline" : "none" }}>
-                <ul style={{listStyle: "none", padding: "0px 20px 0px 10px"}} >
-                    {suggestions.map((suggestion, ind) => {
-                        return <Suggestion key={ind} id={suggestion._id} onMouseDown={handleSuggestionClick}>{suggestion.name}</Suggestion>
-                    })} 
-                </ul> 
-            </div>
+            <DropdownMenu listOpen={listOpen}>
+                {suggestions.map((suggestion, ind) => {
+                    return <Suggestion key={ind} id={suggestion._id} onMouseDown={handleSuggestionClick}>{suggestion.name}</Suggestion>
+                })} 
+            </DropdownMenu>
         </div>
     )
 }

@@ -19,6 +19,9 @@ const Navbar = (props) => {
                 <Menu.Item as={Link} to='/cart'>
                     <Icon name='cart' />
                 </Menu.Item>
+                <Menu.Item as={Link} to='/hearts'>
+                    <Icon name='heart' />
+                </Menu.Item>
                 {!props.loggedIn ? 
                     <Menu.Item
                     name='log in'

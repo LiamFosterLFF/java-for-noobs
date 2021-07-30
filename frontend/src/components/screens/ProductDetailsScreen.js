@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dimmer, Loader, Button } from 'semantic-ui-react';
 import QuantityDropdown from '../QuantityDropdown';
+import LikeButton from '../LikeButton';
 
 //Actions
 import { getProductDetails } from '../../redux/actions/productActions';
@@ -38,6 +39,7 @@ const ProductDetailsScreen = ({ match, history }) => {
                 <div className="product-inStock">Inventory: {product.countInStock}</div>
                 <div className="product-image">ImageURL: {product.imageUrl}</div>
                 <img src={product.imageUrl} alt={product.name}/>
+                <LikeButton item={product}/>
                 <Button onClick={addToCartHandler}>Add to cart</Button>
                 <QuantityDropdown qty={qty} setQty={setQty} countInStock={product.countInStock}/>
                 <br></br>
@@ -46,14 +48,15 @@ const ProductDetailsScreen = ({ match, history }) => {
     }
 
     return (
-    <div style={{ height: "100vh" }} >
-        {loading ? 
-            <Dimmer active><Loader>Loading...</Loader></Dimmer>:
-            error ? 
-                <h2>{error}</h2> :
-                <ProductDetails product={product}/>
-        }
-    </div>)
+        <div style={{ height: "100vh" }} >
+            {loading ? 
+                <Dimmer active><Loader>Loading...</Loader></Dimmer>:
+                error ? 
+                    <h2>{error}</h2> :
+                    <ProductDetails product={product}/>
+            }
+        </div>
+    )
 }
 
 export default ProductDetailsScreen;
